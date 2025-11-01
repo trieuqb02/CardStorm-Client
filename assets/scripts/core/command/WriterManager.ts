@@ -1,31 +1,39 @@
 import { _decorator, Component, Node } from 'cc';
-import { GameData } from '../data/GameData';
-import { DealToPlayers, ICommand, SelectRandomPlayer } from './ICommand';
+import { Data, GameData } from '../data/GameData';
+import { DealToPlayers, UpdatePlayers, ICommand } from './ICommand';
+import { TableAreaManager } from '../../features/TableAreaManager';
+import { ServiceLocator } from '../locator/ServiceLocator';
+import { ServiceKey } from '../locator/ServiceKey';
 const { ccclass, property } = _decorator;
 
 export class Command {
-    public isSync: boolean;
+    public data?: any;
     public action: ICommand;
 }
 
 @ccclass('WriterManager')
 export class WriterManager extends Component {
 
+    private tableAreaMgr!: TableAreaManager;
+
     protected onLoad(): void {
 
     }
 
-    public initGame(data: GameData): Command[] {
+    protected start(): void {
+        this.tableAreaMgr = ServiceLocator.get(ServiceKey.TABLE_AREA);
+    }
+
+    public initGame(data: Data): Command[] {
         const commands: Command[] = [];
 
         commands.push({
-            isSync: true,
-            action: new DealToPlayers(data.players)
+            data: data.players,
+            action: new UpdatePlayers(this.tableAreaMgr)
         })
 
         commands.push({
-            isSync: true,
-            action: new SelectRandomPlayer(data.turnPlayerId)
+            action: new DealToPlayers(this.tableAreaMgr)
         })
 
         return commands;

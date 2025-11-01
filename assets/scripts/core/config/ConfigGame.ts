@@ -14,6 +14,8 @@ export class ConfigGame extends Component {
             MARGIN_Y: 12,
             TIME_FLY: 0.5,
             LIMIT_CARD: 5,
+            VALUE_ORDER: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
+            SUIT_ORDER: ["Spades", "Clubs", "Diamonds", "Hearts"],
         }
     }
 

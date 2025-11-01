@@ -1,46 +1,117 @@
 {
-    "state": "init",
-    "roomId": "1",
-    "turnPlayerId": "p1",
-    "turnTotal": 20,
-    "turn": 1,
-    "timer": 10,
-    "buffs": [],
-    "players": [
-        {
-            "playerId": "p1",
-            "hp": 85,
-            "cards": [
-                "1",
-                "3",
-                "5",
-                "7",
-                "9",
-                "12",
-                "15",
-                "18",
-                "21",
-                "25"
-            ],
-            "buffs": []
+    "event": "GAME_STATE_UPDATE",
+    "timestamp": "2025-11-01T10:20:00Z",
+    "data": {
+        "state": "INIT",
+        "room": {
+            "id": "1",
+            "maxPlayers": 2
         },
-        {
-            "playerId": "p2",
-            "hp": 70,
-            "cards": [
-                "1",
-                "3",
-                "5",
-                "7",
-                "9",
-                "12",
-                "15",
-                "18",
-                "21",
-                "25",
-                "28"
-            ],
-            "buffs": []
-        }
-    ]
+        "turn": {
+            "currentTurn": 1,
+            "totalTurns": 20,
+            "currentPlayerId": "p1",
+            "remainingTime": 10
+        },
+        "players": [
+            {
+                "id": "p1",
+                "displayName": "PlayerOne",
+                "hp": 100,
+                "cards": [
+                    {
+                        "suit": "Hearts",
+                        "value": "3"
+                    },
+                    {
+                        "suit": "Clubs",
+                        "value": "A"
+                    },
+                    {
+                        "suit": "Spades",
+                        "value": "10"
+                    },
+                    {
+                        "suit": "Diamonds",
+                        "value": "6"
+                    },
+                    {
+                        "suit": "Clubs",
+                        "value": "Q"
+                    },
+                    {
+                        "suit": "Spades",
+                        "value": "K"
+                    },
+                    {
+                        "suit": "Hearts",
+                        "value": "2"
+                    },
+                    {
+                        "suit": "Diamonds",
+                        "value": "J"
+                    },
+                    {
+                        "suit": "Spades",
+                        "value": "8"
+                    },
+                    {
+                        "suit": "Clubs",
+                        "value": "4"
+                    }
+                ],
+                "buffs": [],
+                "isDisconnected": false
+            },
+            {
+                "id": "p2",
+                "displayName": "PlayerTwo",
+                "hp": 100,
+                "cards": [
+                    {
+                        "suit": "Diamonds",
+                        "value": "2"
+                    },
+                    {
+                        "suit": "Hearts",
+                        "value": "9"
+                    },
+                    {
+                        "suit": "Clubs",
+                        "value": "6"
+                    },
+                    {
+                        "suit": "Spades",
+                        "value": "A"
+                    },
+                    {
+                        "suit": "Hearts",
+                        "value": "K"
+                    },
+                    {
+                        "suit": "Diamonds",
+                        "value": "9"
+                    },
+                    {
+                        "suit": "Clubs",
+                        "value": "7"
+                    },
+                    {
+                        "suit": "Spades",
+                        "value": "9"
+                    },
+                    {
+                        "suit": "Spades",
+                        "value": "4"
+                    },
+                    {
+                        "suit": "Diamonds",
+                        "value": "7"
+                    }
+                ],
+                "buffs": [],
+                "isDisconnected": false
+            }
+        ]
+    }
 }

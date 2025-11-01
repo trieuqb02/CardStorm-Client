@@ -1,34 +1,33 @@
-import { tween } from "cc";
+import { TableAreaManager } from "../../features/TableAreaManager";
 import { Player } from "../data/GameData";
 
 export interface ICommand {
-    execute(): Promise<void>;
+    execute(data?: any): Promise<void>;
 }
 
 export class DealToPlayers implements ICommand {
 
-    private data!: Player[];
+    private tableAreaMgr!: TableAreaManager;
 
-    constructor(data: Player[]) {
-        this.data = data;
+    constructor(tableAreaMgr: TableAreaManager) {
+        this.tableAreaMgr = tableAreaMgr;
     }
 
     execute(): Promise<void> {
-        console.log(this.data);
-        return Promise.resolve();
+        return this.tableAreaMgr.dealToPlayers();
     }
 }
 
-export class SelectRandomPlayer implements ICommand {
+export class UpdatePlayers implements ICommand {
 
-    private playerId!: string;
+    private tableAreaMgr!: TableAreaManager;
 
-    constructor(data: string) {
-        this.playerId = data;
+    constructor(tableAreaMgr: TableAreaManager) {
+        this.tableAreaMgr = tableAreaMgr;
     }
 
-    execute(): Promise<void> {
-        console.log(this.playerId);
-        return Promise.resolve();
+    execute(data: Player[]): Promise<void> {
+        return this.tableAreaMgr.initPlayers(data);
     }
+
 }

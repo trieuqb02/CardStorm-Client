@@ -12,11 +12,13 @@ export class GameManager extends Component {
     private _director!: DirectorManager;
 
     protected onLoad(): void {
-        this._writer = this.node.getComponent(WriterManager);
-        this._director = this.node.getComponent(DirectorManager);
+
     }
 
     protected start(): void {
+        this._writer = this.node.getComponent(WriterManager);
+        this._director = this.node.getComponent(DirectorManager);
+
         resources.load("StartGame", JsonAsset, (error, JsonAsset) => {
             if (error) {
                 console.log("Load Json Fail!");
@@ -24,9 +26,8 @@ export class GameManager extends Component {
             }
 
             const data = JsonAsset.json;
-
             const dataStore: GameData = data as GameData;
-            const commands = this._writer.initGame(dataStore);
+            const commands = this._writer.initGame(dataStore.data);
             this._director.runCommands(commands);
         })
     }
